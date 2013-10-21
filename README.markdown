@@ -1,4 +1,4 @@
-JavasScript Object Property Observer
+JavaScript Object Property Observer
 ===================================
 
 The propertyObserver.js file uses consists of two functions that let you observe property changes on JavaScript objects. Here's how to use them:
