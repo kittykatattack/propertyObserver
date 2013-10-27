@@ -125,15 +125,15 @@ You'll find these two functions in the observeProperty.js file.
 function observe(subject, property, callbackHandler) {
   Object.defineProperty(subject, property, {
     //Return the default value of the property
-    //("value" automatically gives you the property's current value)
+    //("this.value" automatically gives you the property's current value)
     get: function () {
-      return value;
+      return this.value;
     },
 
     //Set the property with a new value
     set: function (newValue) {
       //Assign the new value
-      value = newValue;
+      this.value = newValue;
 
       //Bind the observer's changeHandler to the subject
       subject.changeHandler = callbackHandler;
@@ -148,8 +148,7 @@ function observe(subject, property, callbackHandler) {
     //unless you want to lock down the property values to prevent your 
     //program from changing them
     enumerable: true,
-    configurable: true,
-    writeable: true
+    configurable: true
   });
 }
 
@@ -164,14 +163,13 @@ function unobserve(subject, property) {
   //Reset the getter and setter
   Object.defineProperty(subject, property, {
     get: function () {
-      return value;
+      return this.value;
     },
     set: function (newValue) {
-      value = newValue;
+      this.value = newValue;
     },
     enumerable: true,
-    configurable: true,
-    writeable: true
+    configurable: true
   });
 }
 ```
